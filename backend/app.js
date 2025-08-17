@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectToDB from "./db/db.js";
 import cookieParser from "cookie-parser";
-import userRoutes from "./routes/user.route.js";
+import userRouter from "./routes/user.route.js";
+import captainRouter from "./routes/captain.route.js";
 dotenv.config();
 
 const app = express();
@@ -18,6 +19,7 @@ connectToDB(process.env.MONGO_URI);
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
-app.use("/users", userRoutes);
+app.use("/users", userRouter);
+app.use("/captains", captainRouter);
 
 export default app;

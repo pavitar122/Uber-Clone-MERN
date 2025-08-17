@@ -8,9 +8,9 @@ import {
 } from "../controllers/user.controller.js";
 import { authUser } from "../middleware/auth.middleware.js";
 
-const router = express.Router();
+const userRouter = express.Router();
 
-router.post(
+userRouter.post(
   "/register",
   [
     body("fullname.firstName")
@@ -24,7 +24,7 @@ router.post(
   registerUser
 );
 
-router.post(
+userRouter.post(
   "/login",
   [
     body("email").isEmail().withMessage("Invalid email address"),
@@ -35,8 +35,8 @@ router.post(
   loginUser
 );
 
-router.get("/profile", authUser, getUserProfile);
+userRouter.get("/profile", authUser, getUserProfile);
 
-router.get("/logout", authUser, logoutUser);
+userRouter.get("/logout", authUser, logoutUser);
 
-export default router;
+export default userRouter;
