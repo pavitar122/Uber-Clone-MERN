@@ -52,9 +52,10 @@ export const getUserProfile = async (req, res, next) => {
 };
 
 export const logoutUser = async (req, res, next) => {
-  res.clearCookie("token");
-  const token =
+   const token =
     req.cookies?.token || req.headers["authorization"]?.split(" ")[1];
+  res.clearCookie("token");
+ 
 
   await BlacklistTokenModel.create({ token });
 
