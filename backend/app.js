@@ -19,6 +19,7 @@ connectToDB(process.env.MONGO_URI);
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
+
 app.use("/users", userRouter);
 app.use("/captains", captainRouter);
 

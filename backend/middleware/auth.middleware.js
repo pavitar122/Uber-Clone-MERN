@@ -16,7 +16,7 @@ export const authUser = async (req, res, next) => {
   if (isBlackListed) {
     return res.status(401).json({ message: "Unauthorized." });
   }
-  
+
   try {
     const decoded_id = jwt.verify(token, process.env.JWT_SECRET);
     const user = await UserModel.findById(decoded_id);
@@ -26,7 +26,6 @@ export const authUser = async (req, res, next) => {
     return res.status(401).json({ message: "Unauthorized." });
   }
 };
-
 
 export const authCaptain = async (req, res, next) => {
   const token =
@@ -40,7 +39,7 @@ export const authCaptain = async (req, res, next) => {
   if (isBlackListed) {
     return res.status(401).json({ message: "Unauthorized." });
   }
-  
+
   try {
     const decoded_id = jwt.verify(token, process.env.JWT_SECRET);
     const captain = await captainModel.findById(decoded_id);
@@ -50,4 +49,3 @@ export const authCaptain = async (req, res, next) => {
     return res.status(401).json({ message: "Unauthorized." });
   }
 };
-
